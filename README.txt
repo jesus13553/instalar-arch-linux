@@ -40,10 +40,10 @@ OPCIONES: PUNTO SCRIPT DEVICE PARAMETROS
 3 ) . ( punto ) SCRIPT /dev/s?? cinnamon
       Lo mismo pero con cinnamon
 
-4 ) . ( punto ) SCRIPT mate. 
+4 ) . ( punto ) SCRIPT /dev/sd?? mate. 
       Lo mismo pero con mate
 
-5 ) . ( punto ) SCRIPT manual 
+5 ) . ( punto ) SCRIPT /dev/sd?? manual 
       Version mejorada de 1 ); sales a una linea de comandos ( pacman listo, (q para salir) :: ),
       bajas lo que quiera y los ajustes son automaticos.
 
@@ -61,10 +61,22 @@ Nuevo Usuario ??
 
 Listo ya teneis un USB con Archlinux funcionando con deepin.
 
+Ejemplo:
+Crear una distro minima:
+
+. instalar_arch_deepin_version_git.sh /dev/sd? manual
+apareces en chroot con esta linea de comandos: pacman listo, (q para salir) :: 
+
+
+tecleas en pacman listo, (q para salir) :: base networkmanager grub 
+listo lo otro es automatico.
+
+
+
 Ejemplo;
 Creado pero queremos modificarlo, o crearlo a nuestro gusto.
 
-. instalar_arch_deepin_version_git.sh manual
+. instalar_arch_deepin_version_git.sh /dev/sd? manual
 
 Ejemplo;
 Creado pero queremos modificarlo con control total, o crearlo desde cero.
