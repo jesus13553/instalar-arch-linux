@@ -98,6 +98,8 @@ para crear un USB con deepin solo teneis que hacer:
 
 Saludos.
 
+Modificado _get_distro por fallo de servidor.
+
 
 
 

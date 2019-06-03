@@ -1,14 +1,12 @@
-_get_archilinux () 
+ get_distro () 
 { 
     eval "$_new";
-    local _HTTP='http://ftp.rediris.es/mirror/archlinux/iso/latest/';
-    local _ISO=$( wget -q -O - -U "" $_HTTP | sed -n 's/[<>]/\n/g;/arch.*iso/p' | grep ^arc.*iso$ );
-    [[ -d _OLD_ARCH ]] || mkdir _OLD_ARCH;
-    [[ -f $(echo archlinux*iso ) ]] && local _arch=$(echo archlinux*iso );
-    [[ X$_arch != X$_ISO ]] && echo Encontrada nueva version && sleep 2 && wget -c -U "" $_HTTP$_ISO || echo Nada que hacer;
-    [[ X$_arch != X$_ISO ]] && [[ X$_arch != X ]] && mv $_arch _OLD_ARCH
+    _HTTP=$(wget -q -O - https://www.archlinux.org/download/ | sed  's/"/\n/g' | sed '/http.*redi.*2019/!d' );
+    _ISO=$( wget -q -O - $_HTTP | sed 's/"/\n/g' | awk '/iso$/' );
+    [[ -f ${_ISO}.control ]] && echo Nada que hacer && return 0;
+    wget -c -O $_ISO $_HTTP$_ISO && : > ${_ISO}.control
 }
- _get_archilinux 
+ get_distro 
 system_to_chroot () 
 { 
     eval "$_new";
